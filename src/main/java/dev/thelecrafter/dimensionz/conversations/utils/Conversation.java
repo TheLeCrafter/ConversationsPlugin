@@ -23,7 +23,10 @@ public class Conversation {
         Bukkit.getScheduler().scheduleSyncDelayedTask(ConversationsPlugin.INSTANCE, () -> {
             if ((line + 1) <= (conversation.size() - 1)) {
                 sendPlayerConversation(player, speaker, conversation, line + 1);
-            } else IN_CONVERSATION.remove(player);
+            } else {
+                player.sendMessage(ChatColor.DARK_GRAY + "[Dialog Ende]");
+                IN_CONVERSATION.remove(player);
+            }
         }, conversation.get(line).length());
     }
 
