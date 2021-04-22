@@ -18,16 +18,18 @@ public class Conversation {
     }
 
     public static void sendPlayerConversation(Player player, NPC speaker, List<String> conversation, Integer line) {
-        IN_CONVERSATION.add(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "[NPC] " + ChatColor.WHITE + speaker.getFullName() + ChatColor.DARK_GRAY + " > " + ChatColor.WHITE + setPlaceholders(player, conversation.get(line)));
-        Bukkit.getScheduler().scheduleSyncDelayedTask(ConversationsPlugin.INSTANCE, () -> {
-            if ((line + 1) <= (conversation.size() - 1)) {
-                sendPlayerConversation(player, speaker, conversation, line + 1);
-            } else {
-                player.sendMessage(ChatColor.DARK_GRAY + "[Dialog Ende]");
-                IN_CONVERSATION.remove(player);
-            }
-        }, conversation.get(line).length());
+        if (player.isOnline()) {
+            IN_CONVERSATION.add(player);
+            player.sendMessage(ChatColor.DARK_GRAY + "[NPC] " + ChatColor.WHITE + speaker.getFullName() + ChatColor.DARK_GRAY + " > " + ChatColor.WHITE + setPlaceholders(player, conversation.get(line)));
+            Bukkit.getScheduler().scheduleSyncDelayedTask(ConversationsPlugin.INSTANCE, () -> {
+                if ((line + 1) <= (conversation.size() - 1)) {
+                    sendPlayerConversation(player, speaker, conversation, line + 1);
+                } else {
+                    player.sendMessage(ChatColor.DARK_GRAY + "[Dialog Ende]");
+                    IN_CONVERSATION.remove(player);
+                }
+            }, conversation.get(line).length());
+        }
     }
 
     public static String setPlaceholders(Player player, String string) {
