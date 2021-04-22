@@ -1,0 +1,11 @@
+name: NPCConversations
+version: ${project.version}
+main: dev.thelecrafter.dimensionz.conversations.ConversationsPlugin
+api-version: 1.16
+depend:
+  - Citizens
+commands:
+  conversation:
+    permission: conversation.command.conversation
+    description: Main command for the conversation plugin
+    usage: /conversation <reload>
