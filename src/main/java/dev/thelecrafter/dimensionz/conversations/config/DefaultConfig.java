@@ -1,13 +1,6 @@
 package dev.thelecrafter.dimensionz.conversations.config;
 
-import dev.thelecrafter.dimensionz.conversations.ConversationsPlugin;
-import dev.thelecrafter.dimensionz.conversations.utils.Talkable;
 import org.bukkit.configuration.file.FileConfiguration;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DefaultConfig {
 

@@ -13,10 +13,6 @@ public class Conversation {
 
     public static final Set<Player> IN_CONVERSATION = new HashSet<>();
 
-    public static List<String> fromTalkable(Talkable talkable) {
-        return FileManager.get().getStringList("conversations." + talkable.toString());
-    }
-
     public static void sendPlayerConversation(Player player, NPC speaker, List<String> conversation, Integer line) {
         if (player.isOnline()) {
             IN_CONVERSATION.add(player);
