@@ -12,7 +12,7 @@ public class OnTalkableClick implements Listener {
     public void onInteract(NPCRightClickEvent event) {
         event.setCancelled(true);
         if (!Conversation.IN_CONVERSATION.contains(event.getClicker())) {
-            Conversation.sendPlayerConversation(event.getClicker(), event.getNPC(), FileManager.get().getStringList(String.valueOf(event.getNPC().getId())), 0);
+            Conversation.sendPlayerConversation(event.getClicker(), event.getNPC(), FileManager.get().getStringList("conversations." + event.getNPC().getId()), 0);
         }
     }
 
